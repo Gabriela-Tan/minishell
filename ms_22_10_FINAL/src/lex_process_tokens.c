@@ -70,18 +70,10 @@ void	ft_tokenize_cmd_and_args(char **tokens, int index, t_ms *ms)
 	int		count;
 	int		i;
 	int		j;
-	int		skip_cats;
 
-	skip_cats = 0;
 	i = -1;
 	j = 0;
 	tok_wo_red = ft_array_wo_redirs(tokens, &count, i, j);
-	if (tokens && count >= 5 && ft_strncmp(tokens[0], "cat", 4) == 0
-		&& ft_strncmp(tokens[1], "|", 2) == 0
-		&& ft_strncmp(tokens[2], "cat", 4) == 0)
-		skip_cats = 1;
-	if (skip_cats && count >= 5)
-		index = 4;
 	ft_process_tokens(tok_wo_red, tokens, ms, index);
 	free_array(tok_wo_red);
 }
